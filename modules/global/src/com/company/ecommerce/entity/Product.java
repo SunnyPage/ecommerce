@@ -3,6 +3,7 @@ package com.company.ecommerce.entity;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "ECOMMERCE_PRODUCT")
 @Entity(name = "ecommerce_Product")
@@ -15,6 +16,17 @@ public class Product extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CATEGORY_ID")
     protected Category category;
+
+    @OneToMany(mappedBy = "product")
+    protected List<LineItem> lineItem;
+
+    public List<LineItem> getLineItem() {
+        return lineItem;
+    }
+
+    public void setLineItem(List<LineItem> lineItem) {
+        this.lineItem = lineItem;
+    }
 
     public Category getCategory() {
         return category;

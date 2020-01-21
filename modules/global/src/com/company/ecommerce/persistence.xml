@@ -5,5 +5,8 @@
         <class>com.company.ecommerce.entity.SubCategory</class>
         <class>com.company.ecommerce.entity.Category</class>
         <class>com.company.ecommerce.entity.Product</class>
+        <class>com.company.ecommerce.entity.LineItem</class>
+        <class>com.company.ecommerce.entity.Order</class>
+        <class>com.company.ecommerce.entity.Address</class>
     </persistence-unit>
 </persistence>
