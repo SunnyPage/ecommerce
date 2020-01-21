@@ -20,13 +20,6 @@ public class Order extends StandardEntity {
     @Column(name = "SHIPPED", nullable = false)
     protected Date shipped;
 
-    @OneToMany(mappedBy = "order")
-    protected List<LineItem> lineItem;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "SHIP_TO_ID")
-    protected Address shipTo;
-
     @Column(name = "ORDER_STATUS", nullable = false)
     protected String orderStatus;
 
@@ -35,6 +28,29 @@ public class Order extends StandardEntity {
 
     @OneToMany(mappedBy = "order")
     protected List<Payment> payment;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ADDRESS_ID")
+    protected Address address;
+
+    @OneToMany(mappedBy = "order")
+    protected List<LineItem> lineItem;
+
+    public List<LineItem> getLineItem() {
+        return lineItem;
+    }
+
+    public void setLineItem(List<LineItem> lineItem) {
+        this.lineItem = lineItem;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public List<Payment> getPayment() {
         return payment;
@@ -52,29 +68,12 @@ public class Order extends StandardEntity {
         this.total = total;
     }
 
-    public Address getShipTo() {
-        return shipTo;
-    }
-
-    public void setShipTo(Address shipTo) {
-        this.shipTo = shipTo;
-    }
-
-
     public OrderStatus getOrderStatus() {
         return orderStatus == null ? null : OrderStatus.fromId(orderStatus);
     }
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus == null ? null : orderStatus.getId();
-    }
-
-    public List<LineItem> getLineItem() {
-        return lineItem;
-    }
-
-    public void setLineItem(List<LineItem> lineItem) {
-        this.lineItem = lineItem;
     }
 
     public Date getShipped() {

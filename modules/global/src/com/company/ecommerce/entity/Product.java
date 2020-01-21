@@ -17,17 +17,6 @@ public class Product extends StandardEntity {
     @JoinColumn(name = "CATEGORY_ID")
     protected Category category;
 
-    @OneToMany(mappedBy = "product")
-    protected List<LineItem> lineItem;
-
-    public List<LineItem> getLineItem() {
-        return lineItem;
-    }
-
-    public void setLineItem(List<LineItem> lineItem) {
-        this.lineItem = lineItem;
-    }
-
     public Category getCategory() {
         return category;
     }

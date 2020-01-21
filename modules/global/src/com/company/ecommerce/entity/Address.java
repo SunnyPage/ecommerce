@@ -11,26 +11,14 @@ import java.util.List;
 @Entity(name = "ecommerce_Address")
 public class Address extends StandardEntity {
     private static final long serialVersionUID = -2910784475161739455L;
-
     @OneToMany(mappedBy = "address")
-    protected List<LineItem> lineItem;
+    protected List<Order> lineItem;
 
-    @OneToMany(mappedBy = "shipTo")
-    protected List<Order> order;
-
-    public List<Order> getOrder() {
-        return order;
-    }
-
-    public void setOrder(List<Order> order) {
-        this.order = order;
-    }
-
-    public List<LineItem> getLineItem() {
+    public List<Order> getLineItem() {
         return lineItem;
     }
 
-    public void setLineItem(List<LineItem> lineItem) {
+    public void setLineItem(List<Order> lineItem) {
         this.lineItem = lineItem;
     }
 }
