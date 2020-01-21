@@ -8,5 +8,8 @@
         <class>com.company.ecommerce.entity.LineItem</class>
         <class>com.company.ecommerce.entity.Order</class>
         <class>com.company.ecommerce.entity.Address</class>
+        <class>com.company.ecommerce.entity.ShoppingCard</class>
+        <class>com.company.ecommerce.entity.Payment</class>
+        <class>com.company.ecommerce.entity.Customer</class>
     </persistence-unit>
 </persistence>

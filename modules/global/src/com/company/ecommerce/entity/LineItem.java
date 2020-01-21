@@ -20,42 +20,6 @@ public class LineItem extends StandardEntity {
     @Column(name = "PRICE")
     protected BigDecimal price;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ADDRESS_ID")
-    protected Address address;
-
-    @Column(name = "ORDER_STATUS", nullable = false)
-    protected String orderStatus;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ORDER_ID")
-    protected Order order;
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-
-    public OrderStatus getOrderStatus() {
-        return orderStatus == null ? null : OrderStatus.fromId(orderStatus);
-    }
-
-    public void setOrderStatus(OrderStatus orderStatus) {
-        this.orderStatus = orderStatus == null ? null : orderStatus.getId();
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-
     public BigDecimal getPrice() {
         return price;
     }
