@@ -1,6 +1,7 @@
 package com.company.ecommerce.entity;
 
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.security.entity.User;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,6 +14,18 @@ public class ShoppingCard extends StandardEntity {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CREATED", nullable = false)
     protected Date created;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "USER_ID")
+    protected User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Date getCreated() {
         return created;

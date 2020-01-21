@@ -20,6 +20,8 @@ public class Payment extends StandardEntity {
 
     @Column(name = "DATAILS")
     protected String datails;
+
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ORDER_ID")
     protected Order order;

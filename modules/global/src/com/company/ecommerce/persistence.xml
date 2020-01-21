@@ -11,5 +11,7 @@
         <class>com.company.ecommerce.entity.Payment</class>
         <class>com.company.ecommerce.entity.Customer</class>
         <class>com.company.ecommerce.entity.LineItem</class>
+        <class>com.company.ecommerce.entity.Account</class>
+        <class>com.company.ecommerce.entity.Phone</class>
     </persistence-unit>
 </persistence>
