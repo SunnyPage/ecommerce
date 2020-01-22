@@ -2,5 +2,10 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-ecommerce" insertBefore="administration">
         <item screen="ecommerce_Customer.browse"/>
+        <item screen="ecommerce_SubCategory.browse"/>
+        <item screen="ecommerce_Product.browse"/>
+        <item screen="ecommerce_Category.browse"/>
+        <item screen="ecommerce_Phone.browse"/>
+        <item screen="ecommerce_Account.browse"/>
     </menu>
 </menu-config>

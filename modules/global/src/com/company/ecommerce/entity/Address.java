@@ -8,6 +8,17 @@ import java.util.List;
 @Table(name = "ECOMMERCE_ADDRESS")
 @Entity(name = "ecommerce_Address")
 public class Address extends StandardEntity {
+
+    @Column(name = "STREET", nullable = false)
+    protected String street;
+
+    @Column(name = "POST_CODE", nullable = false)
+    protected String postCode;
+
+    @Column(name = "CITY", nullable = false)
+    protected String city;
+
+
     private static final long serialVersionUID = -2910784475161739455L;
     @OneToMany(mappedBy = "address")
     protected List<Order> lineItem;
@@ -17,6 +28,30 @@ public class Address extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ACCOUNT_ID")
     protected Account account;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
 
     public Account getAccount() {
         return account;

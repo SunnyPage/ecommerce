@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.company.ecommerce.web.screens.account">
+    <data>
+        <instance id="accountDc"
+                  class="com.company.ecommerce.entity.Account"
+                  view="account-view">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="accountDc">
+            <column width="250px">
+                <checkBox id="isclosedField" property="isclosed"/>
+                <dateField id="openField" property="open"/>
+                <dateField id="closedField" property="closed"/>
+                <pickerField id="customerAccountField" property="customerAccount">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="paymentField" property="payment">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

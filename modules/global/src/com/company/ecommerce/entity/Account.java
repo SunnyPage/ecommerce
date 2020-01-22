@@ -25,11 +25,11 @@ public class Account extends StandardEntity {
     @Column(name = "CLOSED")
     protected Date closed;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CUSTOMER_ACCOUNT_ID")
     protected Account customerAccount;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PAYMENT_ID")
     protected Payment payment;
 
