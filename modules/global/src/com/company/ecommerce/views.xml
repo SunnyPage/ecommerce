@@ -1,4 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
 
+    <view entity="ecommerce_SubCategory" name="subCategory-view">
+        <property name="name"/>
+        <property name="category" view="_minimal"/>
+    </view>
+    <view entity="ecommerce_ShoppingCard" name="shoppingCard-view">
+        <property name="created"/>
+        <property name="user" view="_minimal"/>
+    </view>
+    <view entity="ecommerce_Product" name="product-view">
+        <property name="name"/>
+        <property name="category" view="_minimal"/>
+    </view>
+    <view entity="ecommerce_Phone" name="phone-view">
+        <property name="number"/>
+        <property name="customer" view="_minimal"/>
+    </view>
+    <view entity="ecommerce_Payment" name="payment-view">
+        <property name="paid"/>
+        <property name="total"/>
+        <property name="datails"/>
+        <property name="order" view="_minimal"/>
+    </view>
+    <view entity="ecommerce_Order" name="order-view">
+        <property name="ordered"/>
+        <property name="shipped"/>
+        <property name="orderStatus"/>
+        <property name="total"/>
+        <property name="payment" view="_minimal"/>
+        <property name="address" view="_minimal"/>
+        <property name="lineItem" view="_minimal"/>
+    </view>
+    <view entity="ecommerce_LineItem" name="lineItem-view">
+        <property name="quantity"/>
+        <property name="price"/>
+        <property name="order" view="_minimal"/>
+    </view>
+    <view entity="ecommerce_Customer" name="customer-view">
+        <property name="address" view="_minimal"/>
+        <property name="phone" view="_minimal"/>
+        <property name="accountCustomer" view="_minimal"/>
+        <property name="email"/>
+        <property name="user" view="_minimal"/>
+    </view>
+    <view entity="ecommerce_Category" name="category-view">
+        <property name="name"/>
+        <property name="subCategory" view="_minimal"/>
+        <property name="product" view="_minimal"/>
+    </view>
+    <view entity="ecommerce_Address" name="address-view">
+        <property name="lineItem" view="_minimal"/>
+        <property name="customer" view="_minimal"/>
+        <property name="account" view="_minimal"/>
+    </view>
+    <view entity="ecommerce_Account" name="account-view">
+        <property name="address" view="_minimal"/>
+        <property name="isclosed"/>
+        <property name="open"/>
+        <property name="closed"/>
+        <property name="customerAccount" view="_minimal"/>
+        <property name="payment" view="_minimal"/>
+    </view>
 </views>
