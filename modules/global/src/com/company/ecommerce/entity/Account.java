@@ -1,11 +1,13 @@
 package com.company.ecommerce.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@NamePattern("%s|open")
 @Table(name = "ECOMMERCE_ACCOUNT")
 @Entity(name = "ecommerce_Account")
 public class Account extends StandardEntity {
@@ -32,6 +34,17 @@ public class Account extends StandardEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PAYMENT_ID")
     protected Payment payment;
+
+    @OneToMany(mappedBy = "account")
+    protected List<Order> order;
+
+    public List<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(List<Order> order) {
+        this.order = order;
+    }
 
     public Payment getPayment() {
         return payment;

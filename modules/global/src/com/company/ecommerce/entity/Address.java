@@ -1,10 +1,12 @@
 package com.company.ecommerce.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
 import java.util.List;
 
+@NamePattern("%s|street")
 @Table(name = "ECOMMERCE_ADDRESS")
 @Entity(name = "ecommerce_Address")
 public class Address extends StandardEntity {
@@ -25,7 +27,7 @@ public class Address extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CUSTOMER_ID")
     protected Customer customer;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ACCOUNT_ID")
     protected Account account;
 

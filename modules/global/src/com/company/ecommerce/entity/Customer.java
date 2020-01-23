@@ -1,11 +1,13 @@
 package com.company.ecommerce.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.security.entity.User;
 
 import javax.persistence.*;
 import java.util.List;
 
+@NamePattern("%s|user")
 @Table(name = "ECOMMERCE_CUSTOMER")
 @Entity(name = "ecommerce_Customer")
 public class Customer extends StandardEntity {

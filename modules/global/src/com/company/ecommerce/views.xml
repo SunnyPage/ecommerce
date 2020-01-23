@@ -37,26 +37,20 @@
         <property name="price"/>
         <property name="order" view="_minimal"/>
     </view>
-    <view entity="ecommerce_Customer" name="customer-view">
-        <property name="address" view="_minimal">
+    <view entity="ecommerce_Customer" name="customer-view" extends="_local">
+        <property name="address" fetch="AUTO" view="_minimal">
             <property name="street"/>
             <property name="postCode"/>
             <property name="city"/>
         </property>
         <property name="phone" view="_minimal"/>
         <property name="accountCustomer" view="_minimal"/>
-        <property name="email"/>
         <property name="user" view="_minimal"/>
     </view>
     <view entity="ecommerce_Category" name="category-view">
         <property name="name"/>
         <property name="subCategory" view="_minimal"/>
         <property name="product" view="_minimal"/>
-    </view>
-    <view entity="ecommerce_Address" name="address-view">
-        <property name="lineItem" view="_minimal"/>
-        <property name="customer" view="_minimal"/>
-        <property name="account" view="_minimal"/>
     </view>
     <view entity="ecommerce_Account" name="account-view">
         <property name="address" view="_minimal"/>

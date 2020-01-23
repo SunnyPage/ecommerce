@@ -8,6 +8,7 @@
                   class="com.company.ecommerce.entity.Customer"
                   view="customer-view">
             <loader/>
+            <collection id="addressDc" property="address"/>
         </instance>
     </data>
     <dialogMode height="600"
@@ -30,6 +31,25 @@
                 </pickerField>
             </column>
         </form>
+        <groupBox id="AddressBox" caption="Address">
+            <table id="AddressTable" dataContainer="addressDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create" openType="DIALOG"/>
+                    <action id="edit" type="edit" openType="DIALOG" />
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="street"/>
+                    <column id="postCode"/>
+                    <column id="city"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="AddressTable.create"/>
+                    <button action="AddressTable.edit"/>
+                    <button action="AddressTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>
