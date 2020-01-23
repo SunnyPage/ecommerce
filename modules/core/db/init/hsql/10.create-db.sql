@@ -94,9 +94,10 @@ create table ECOMMERCE_ORDER (
     --
     ORDERED timestamp not null,
     SHIPPED timestamp not null,
-    SHIP_TO_ID varchar(36) not null,
     ORDER_STATUS varchar(50) not null,
     TOTAL decimal(19, 2),
+    ADDRESS_ID varchar(36),
+    ACCOUNT_ID varchar(36) not null,
     --
     primary key (ID)
 )^
@@ -113,8 +114,9 @@ create table ECOMMERCE_LINE_ITEM (
     DELETED_BY varchar(50),
     --
     QUANTITY integer,
-    PRODUCT_ID varchar(36) not null,
     PRICE decimal(19, 2),
+    PRODUCT_ID varchar(36) not null,
+    ORDER_ID varchar(36) not null,
     --
     primary key (ID)
 )^
@@ -149,3 +151,40 @@ create table ECOMMERCE_SHOPPING_CARD (
     primary key (ID)
 )^
 -- end ECOMMERCE_SHOPPING_CARD
+-- begin ECOMMERCE_ACCOUNT
+create table ECOMMERCE_ACCOUNT (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    ISCLOSED boolean,
+    OPEN_ timestamp not null,
+    CLOSED timestamp,
+    CUSTOMER_ACCOUNT_ID varchar(36),
+    PAYMENT_ID varchar(36),
+    --
+    primary key (ID)
+)^
+-- end ECOMMERCE_ACCOUNT
+-- begin ECOMMERCE_PHONE
+create table ECOMMERCE_PHONE (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NUMBER_ varchar(255) not null,
+    CUSTOMER_ID varchar(36) not null,
+    --
+    primary key (ID)
+)^
+-- end ECOMMERCE_PHONE

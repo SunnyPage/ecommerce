@@ -7,7 +7,10 @@ import javax.annotation.Nullable;
 
 public enum OrderStatus implements EnumClass<String> {
 
-    ;
+    New("A"),
+    Active("B"),
+    Blocked("C"),
+    Banned("D");
 
     private String id;
 

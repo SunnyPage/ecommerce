@@ -5,17 +5,25 @@ import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.entity.annotation.PublishEntityChangedEvents;
 import com.haulmont.cuba.core.global.DeletePolicy;
 
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
+@PublishEntityChangedEvents
 @Table(name = "ECOMMERCE_ORDER")
 @Entity(name = "ecommerce_Order")
 public class Order extends StandardEntity {
     private static final long serialVersionUID = -7499539244319868765L;
+
+    @Column(name = "ORDER_ID", nullable = false)
+    protected String orderId;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "ORDERED", nullable = false)
@@ -47,6 +55,14 @@ public class Order extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "ACCOUNT_ID")
     protected Account account;
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
 
     public Account getAccount() {
         return account;
@@ -111,4 +127,5 @@ public class Order extends StandardEntity {
     public void setOrdered(Date ordered) {
         this.ordered = ordered;
     }
+
 }

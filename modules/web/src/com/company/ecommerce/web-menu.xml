@@ -6,5 +6,7 @@
         <item screen="ecommerce_Category.browse"/>
         <item screen="ecommerce_Phone.browse"/>
         <item screen="ecommerce_Account.browse"/>
+        <item screen="ecommerce_Order.browse"/>
+        <item screen="ecommerce_SubCategory.browse"/>
     </menu>
 </menu-config>

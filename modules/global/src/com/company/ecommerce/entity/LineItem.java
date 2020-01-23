@@ -1,5 +1,6 @@
 package com.company.ecommerce.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
@@ -7,6 +8,7 @@ import com.haulmont.cuba.core.entity.annotation.LookupType;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+@NamePattern("%s|product")
 @Table(name = "ECOMMERCE_LINE_ITEM")
 @Entity(name = "ecommerce_LineItem")
 public class LineItem extends StandardEntity {

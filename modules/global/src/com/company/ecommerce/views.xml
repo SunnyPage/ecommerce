@@ -23,19 +23,14 @@
         <property name="datails"/>
         <property name="order" view="_minimal"/>
     </view>
-    <view entity="ecommerce_Order" name="order-view">
-        <property name="ordered"/>
-        <property name="shipped"/>
-        <property name="orderStatus"/>
-        <property name="total"/>
-        <property name="payment" view="_minimal"/>
-        <property name="address" view="_minimal"/>
-        <property name="lineItem" view="_minimal"/>
+    <view entity="ecommerce_Order" name="order-view" extends="_local">
+        <property name="lineItem" view="lineItem-view"/>
+        <property name="account" view="_minimal"/>
     </view>
-    <view entity="ecommerce_LineItem" name="lineItem-view">
-        <property name="quantity"/>
-        <property name="price"/>
-        <property name="order" view="_minimal"/>
+    <view entity="ecommerce_LineItem" name="lineItem-view" extends="_local">
+        <property name="product" view="_minimal">
+            <property name="name"/>
+        </property>
     </view>
     <view entity="ecommerce_Customer" name="customer-view" extends="_local">
         <property name="address" fetch="AUTO" view="_minimal">
