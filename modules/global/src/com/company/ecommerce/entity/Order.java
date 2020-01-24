@@ -8,13 +8,10 @@ import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.entity.annotation.PublishEntityChangedEvents;
 import com.haulmont.cuba.core.global.DeletePolicy;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @PublishEntityChangedEvents
 @Table(name = "ECOMMERCE_ORDER")

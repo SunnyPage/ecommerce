@@ -3,6 +3,7 @@
         caption="msg://editorCaption"
         focusComponent="form"
         messagesPack="com.company.ecommerce.web.screens.order">
+
     <data>
         <instance id="orderDc"
                   class="com.company.ecommerce.entity.Order"
@@ -10,6 +11,14 @@
             <loader/>
             <collection id="lineItemDc" property="lineItem"/>
         </instance>
+
+        <collection id="ordersDs"
+            class="com.company.ecommerce.entity.Order"
+            view="order-view">
+            <collection id="lineItem2Dc" property="lineItem"/>
+          property="lineItem"/>
+        </collection>
+
         <collection id="accountsDc" class="com.company.ecommerce.entity.Account" view="_minimal">
             <loader id="accountsLc">
                 <query>
@@ -17,44 +26,97 @@
                 </query>
             </loader>
         </collection>
+        <collection id="logDs"
+                              class="com.haulmont.cuba.security.entity.EntityLogItem"
+                              view="logView">
+            <loader id="ordersDl">
+                <query>
+                    <![CDATA[select i from sec$EntityLog i
+                    where i.entityRef.entityId = :OrderId order by i.eventTs desc]]>
+                </query>
+            </loader>
+            <collection id="logAttrDs"
+                                  property="attributes"/>
+        </collection>
     </data>
+
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="orderDc">
-            <column width="250px">
-                <textField id="orderIdField" property="orderId"/>
-                <dateField id="orderedField" property="ordered"/>
-                <dateField id="shippedField" property="shipped"/>
-                <lookupField id="orderStatusField" property="orderStatus"/>
-                <textField id="totalField" property="total"/>
-                <lookupPickerField id="accountField" optionsContainer="accountsDc" property="account">
-                    <actions>
-                        <action id="lookup" type="picker_lookup"/>
-                    </actions>
-                </lookupPickerField>
-            </column>
-        </form>
-        <groupBox id="lineItemBox" caption="msg://com.company.ecommerce.entity/Order.lineItem">
-            <table id="lineItemTable" dataContainer="lineItemDc" width="100%" height="200px">
-                <actions>
-                    <action id="create" type="create" openType="DIALOG" />
-                    <action id="edit" type="edit" openType="DIALOG" />
-                    <action id="remove" type="remove" openType="DIALOG" />
-                </actions>
-                <columns>
-                    <column id="product"/>
-                </columns>
-                <buttonsPanel>
-                    <button action="lineItemTable.create"/>
-                    <button action="lineItemTable.edit"/>
-                    <button action="lineItemTable.remove"/>
-                </buttonsPanel>
-            </table>
-        </groupBox>
-        <hbox id="editActions" spacing="true">
-            <button action="windowCommitAndClose"/>
-            <button action="windowClose"/>
-        </hbox>
+    <layout expand="tabSheet"
+            spacing="true">
+        <tabSheet id="tabSheet">
+            <tab id="dataTab"
+                 caption="msg://dataTab"
+                 expand="lineItemsBox"
+                 margin="true"
+                 spacing="true">
+                <form id="form" dataContainer="orderDc">
+                    <column width="250px">
+                            <textField id="orderIdField" property="orderId" editable="false"/>
+                            <dateField id="orderedField" property="ordered"/>
+                            <dateField id="shippedField" property="shipped"/>
+                            <lookupField id="orderStatusField" property="orderStatus"/>
+                            <textField id="totalField" property="total"/>
+                            <lookupPickerField id="accountField" optionsContainer="accountsDc" property="account">
+                                <actions>
+                                    <action id="lookup" type="picker_lookup"/>
+                                </actions>
+                            </lookupPickerField>
+                        </column>
+                    </form>
+                        <groupBox id="lineItemsBox" caption="msg://com.company.ecommerce.entity/Order.lineItem">
+                            <table id="lineItemTable" dataContainer="lineItemDc" width="100%" height="200px">
+                                <actions>
+                                    <action id="create" type="create" openType="DIALOG" />
+                                    <action id="edit" type="edit" openType="DIALOG" />
+                                    <action id="remove" type="remove" openType="DIALOG" />
+                                </actions>
+                                <columns>
+                                    <column id="product"/>
+                                </columns>
+                                <buttonsPanel>
+                                    <button action="lineItemTable.create"/>
+                                    <button action="lineItemTable.edit"/>
+                                    <button action="lineItemTable.remove"/>
+                                </buttonsPanel>
+                            </table>
+                        </groupBox>
+            </tab>
+
+            <tab id="changesTab"
+                 caption="Changes"
+                 expand="split"
+                 margin="true"
+                 spacing="true">
+                <split id="split"
+                       height="100%"
+                       orientation="vertical"
+                       width="100%">
+                    <table id="logTable" dataContainer="logDs"
+                           height="100%"
+                           width="100%">
+                        <columns>
+                            <column id="eventTs"/>
+                            <column id="user.login"/>
+                            <column id="type"/>
+                        </columns>
+                        <rows/>
+                    </table>
+                    <table id="logAttrTable" dataContainer="logAttrDs"
+                           height="100%"
+                           width="100%">
+                        <columns>
+                            <column id="name"/>
+                            <column id="oldValue"/>
+                            <column id="value"/>
+                        </columns>
+                        <rows/>
+                    </table>
+                </split>
+            </tab>
+
+        </tabSheet>
+            <frame id="windowActions"
+                   screen="editWindowActions"/>
     </layout>
 </window>

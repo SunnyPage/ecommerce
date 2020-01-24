@@ -1,10 +1,12 @@
 package com.company.ecommerce.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
 import java.util.List;
 
+@NamePattern("%s|name")
 @Table(name = "ECOMMERCE_PRODUCT")
 @Entity(name = "ecommerce_Product")
 public class Product extends StandardEntity {
