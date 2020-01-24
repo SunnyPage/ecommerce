@@ -16,7 +16,6 @@
             class="com.company.ecommerce.entity.Order"
             view="order-view">
             <collection id="lineItem2Dc" property="lineItem"/>
-          property="lineItem"/>
         </collection>
 
         <collection id="accountsDc" class="com.company.ecommerce.entity.Account" view="_minimal">
@@ -51,7 +50,7 @@
                  margin="true"
                  spacing="true">
                 <form id="form" dataContainer="orderDc">
-                    <column width="250px">
+                    <column width="250px" >
                             <textField id="orderIdField" property="orderId" editable="false"/>
                             <dateField id="orderedField" property="ordered"/>
                             <dateField id="shippedField" property="shipped"/>
@@ -65,7 +64,7 @@
                         </column>
                     </form>
                         <groupBox id="lineItemsBox" caption="msg://com.company.ecommerce.entity/Order.lineItem">
-                            <table id="lineItemTable" dataContainer="lineItemDc" width="100%" height="200px">
+                            <table id="lineItemTable" dataContainer="lineItemDc" width="100%" height="100%">
                                 <actions>
                                     <action id="create" type="create" openType="DIALOG" />
                                     <action id="edit" type="edit" openType="DIALOG" />
@@ -118,5 +117,10 @@
         </tabSheet>
             <frame id="windowActions"
                    screen="editWindowActions"/>
+
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
     </layout>
 </window>

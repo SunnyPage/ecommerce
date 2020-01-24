@@ -54,5 +54,7 @@
         <property name="closed"/>
         <property name="customerAccount" view="_minimal"/>
         <property name="payment" view="_minimal"/>
+        <property name="order" view="order-view"/>
     </view>
+    <view entity="ecommerce_Address" name="address-view" extends="_local"/>
 </views>

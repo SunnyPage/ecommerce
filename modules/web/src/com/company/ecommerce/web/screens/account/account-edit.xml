@@ -9,30 +9,101 @@
                   view="account-view">
             <loader/>
         </instance>
+
+        <collection id="addressDs"
+            class="com.company.ecommerce.entity.Address"
+            view="_local">
+            <loader id="addressLc">
+                <query>
+                    <![CDATA[select e from ecommerce_Address e]]>
+                </query>
+            </loader>
+        </collection>
+
+        <collection id="orderDc"
+                  class="com.company.ecommerce.entity.Order"
+                  view="order-view">
+            <loader id="orderLc">
+                <query>
+                    <![CDATA[select e from ecommerce_Order e]]>
+                </query>
+            </loader>
+            <collection id="lineItemDc" property="lineItem"/>
+        </collection>
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="accountDc">
-            <column width="250px">
-                <checkBox id="isclosedField" property="isclosed"/>
-                <dateField id="openField" property="open"/>
-                <dateField id="closedField" property="closed"/>
-                <pickerField id="customerAccountField" property="customerAccount">
-                    <actions>
-                        <action id="lookup" type="picker_lookup"/>
-                        <action id="clear" type="picker_clear"/>
-                    </actions>
-                </pickerField>
-                <pickerField id="paymentField" property="payment">
-                    <actions>
-                        <action id="lookup" type="picker_lookup"/>
-                        <action id="clear" type="picker_clear"/>
-                    </actions>
-                </pickerField>
-            </column>
-        </form>
-        <hbox id="editActions" spacing="true">
+    <layout expand="windowActions" spacing="true">
+        <tabSheet>
+        <tab id="accountDataTab" caption="msg://accountData" expand="form" spacing="true" margin="true">
+            <form id="form" dataContainer="accountDc">
+                <column width="250px">
+                    <checkBox id="isclosedField" property="isclosed"/>
+                    <dateField id="openField" property="open"/>
+                    <dateField id="closedField" property="closed"/>
+                    <pickerField id="customerAccountField" property="customerAccount">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="paymentField" property="payment">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                </column>
+            </form>
+        </tab>
+
+        <tab id="ordersTab" expand="ordersTable" caption="msg://order" spacing="true" margin="true">
+
+            <table id="ordersTable" dataContainer="orderDc"
+                   height="100%"
+                   width="100%">
+                <actions>
+                    <action id="create" type="create" openType="DIALOG"/>
+                    <action id="edit" type="edit" openType="DIALOG"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="orderId"/>
+                    <column id="ordered"/>
+                    <column id="shipped"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="ordersTable.create"/>
+                    <button action="ordersTable.edit"/>
+                    <button action="ordersTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </tab>
+
+        <tab id="addressesTab" expand="addressesTable" caption="msg://addresses" spacing="true" margin="true">
+            <table id="addressesTable" dataContainer="addressDs"
+                   height="100%"
+                   width="100%">
+                <actions>
+                    <action id="create" type="create" openType="DIALOG"/>
+                    <action id="edit" type="edit" openType="DIALOG"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="street"/>
+                    <column id="postCode"/>
+                    <column id="city"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="addressesTable.create"/>
+                    <button action="addressesTable.edit"/>
+                    <button action="addressesTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </tab>
+    </tabSheet>
+
+        <hbox id="windowActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>
         </hbox>
