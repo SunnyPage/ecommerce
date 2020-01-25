@@ -53,6 +53,19 @@ public class Order extends StandardEntity {
     @JoinColumn(name = "ACCOUNT_ID")
     protected Account account;
 
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "order")
+    protected List<Documents> documents;
+
+    public List<Documents> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(List<Documents> documents) {
+        this.documents = documents;
+    }
+
     public String getOrderId() {
         return orderId;
     }

@@ -10,6 +10,7 @@
                   view="order-view">
             <loader/>
             <collection id="lineItemDc" property="lineItem"/>
+            <collection id="documentsDc" property="documents"/>
         </instance>
 
         <collection id="ordersDs"
@@ -71,7 +72,9 @@
                                     <action id="remove" type="remove" openType="DIALOG" />
                                 </actions>
                                 <columns>
+                                    <column id="quantity"/>
                                     <column id="product"/>
+                                    <column id="price"/>
                                 </columns>
                                 <buttonsPanel>
                                     <button action="lineItemTable.create"/>
@@ -80,6 +83,29 @@
                                 </buttonsPanel>
                             </table>
                         </groupBox>
+            </tab>
+
+            <tab id="documentsTab" caption="msg://documents" expand="documentsTable" margin="true" spacing="true">
+                <table id="documentsTable" dataContainer="documentsDc"
+                       height="100%"
+                       width="100%">
+                    <actions>
+                        <action id="create" type="create" openType="DIALOG" />
+                        <action id="edit" type="edit" openType="DIALOG" />
+                        <action id="remove" type="remove" />
+                        <action id="generateInvoice" invoke="generateInvoice" caption="msg://generateInvoice"/>
+                    </actions>
+                    <columns>
+                        <column id="name"/>
+                        <column id="type"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="documentsTable.create"/>
+                        <button action="documentsTable.edit"/>
+                        <button action="documentsTable.remove"/>
+                        <button action="documentsTable.generateInvoice"/>
+                    </buttonsPanel>
+                </table>
             </tab>
 
             <tab id="changesTab"

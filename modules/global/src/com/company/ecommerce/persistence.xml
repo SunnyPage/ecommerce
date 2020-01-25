@@ -13,5 +13,6 @@
         <class>com.company.ecommerce.entity.LineItem</class>
         <class>com.company.ecommerce.entity.Account</class>
         <class>com.company.ecommerce.entity.Phone</class>
+        <class>com.company.ecommerce.entity.Documents</class>
     </persistence-unit>
 </persistence>
