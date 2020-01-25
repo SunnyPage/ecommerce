@@ -10,7 +10,7 @@ import java.util.List;
 @NamePattern("%s|user")
 @Table(name = "ECOMMERCE_CUSTOMER")
 @Entity(name = "ecommerce_Customer")
-public class Customer extends StandardEntity {
+public class Customer extends StandardTenantEntity {
     private static final long serialVersionUID = 2663860954128574642L;
 
     @OneToMany(mappedBy = "customer")

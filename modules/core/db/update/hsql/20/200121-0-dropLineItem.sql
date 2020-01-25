@@ -1,1 +1,0 @@
-alter table ECOMMERCE_LINE_ITEM rename to ECOMMERCE_LINE_ITEM__U93167 ;

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="tenantsTable"
+        messagesPack="com.company.ecommerce.web.screens.tenant">
+    <data readOnly="true">
+        <collection id="tenantsDc"
+                    class="com.company.ecommerce.entity.Tenant"
+                    view="_local">
+            <loader id="tenantsDl">
+                <query>
+                    <![CDATA[select e from ecommerce_Tenant e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tenantsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="tenantsTable"
+                dataLoader="tenantsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="tenantsTable"
+                    width="100%"
+                    dataContainer="tenantsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="nama"/>
+                <column id="code"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="tenantsTable.create"/>
+                <button id="editBtn" action="tenantsTable.edit"/>
+                <button id="removeBtn" action="tenantsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

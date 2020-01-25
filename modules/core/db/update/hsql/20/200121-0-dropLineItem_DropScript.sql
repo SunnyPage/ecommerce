@@ -1,1 +1,0 @@
-drop table ECOMMERCE_LINE_ITEM__U93167 if exists cascade ;

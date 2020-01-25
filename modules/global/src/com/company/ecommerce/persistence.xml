@@ -14,5 +14,7 @@
         <class>com.company.ecommerce.entity.Account</class>
         <class>com.company.ecommerce.entity.Phone</class>
         <class>com.company.ecommerce.entity.Documents</class>
+        <class>com.company.ecommerce.entity.Tenant</class>
+        <class>com.company.ecommerce.entity.StandardTenantEntity</class>
     </persistence-unit>
 </persistence>
