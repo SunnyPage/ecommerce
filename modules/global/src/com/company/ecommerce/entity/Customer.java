@@ -15,19 +15,26 @@ public class Customer extends StandardTenantEntity {
 
     @OneToMany(mappedBy = "customer")
     protected List<Address> address;
-
     @OneToMany(mappedBy = "customer")
     protected List<Phone> phone;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ACCOUNT_CUSTOMER_ID")
     protected Account accountCustomer;
-    @Column(name = "EMAIL", nullable = false)
+    @Column(name = "EMAIL")
     protected String email;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     protected User user;
+
+    public List<Address> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<Address> address) {
+        this.address = address;
+    }
 
     public User getUser() {
         return user;
@@ -61,11 +68,5 @@ public class Customer extends StandardTenantEntity {
         this.phone = phone;
     }
 
-    public List<Address> getAddress() {
-        return address;
-    }
 
-    public void setAddress(List<Address> address) {
-        this.address = address;
-    }
 }

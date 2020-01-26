@@ -67,6 +67,25 @@ create table ECOMMERCE_SUB_CATEGORY (
     primary key (ID)
 )^
 -- end ECOMMERCE_SUB_CATEGORY
+-- begin ECOMMERCE_CUSTOMER
+create table ECOMMERCE_CUSTOMER (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    TENANT_ID varchar(36) not null,
+    --
+    ACCOUNT_CUSTOMER_ID varchar(36) not null,
+    EMAIL varchar(255) not null,
+    USER_ID varchar(36) not null,
+    --
+    primary key (ID)
+)^
+-- end ECOMMERCE_CUSTOMER
 -- begin ECOMMERCE_ACCOUNT
 create table ECOMMERCE_ACCOUNT (
     ID varchar(36) not null,
@@ -195,8 +214,8 @@ create table ECOMMERCE_ADDRESS (
     STREET varchar(255) not null,
     POST_CODE varchar(255) not null,
     CITY varchar(255) not null,
-    CUSTOMER_ID varchar(36) not null,
     ACCOUNT_ID varchar(36),
+    CUSTOMER_ID varchar(36) not null,
     --
     primary key (ID)
 )^
@@ -218,22 +237,3 @@ create table ECOMMERCE_SHOPPING_CARD (
     primary key (ID)
 )^
 -- end ECOMMERCE_SHOPPING_CARD
--- begin ECOMMERCE_CUSTOMER
-create table ECOMMERCE_CUSTOMER (
-    ID varchar(36) not null,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    TENANT_ID varchar(36) not null,
-    --
-    ACCOUNT_CUSTOMER_ID varchar(36) not null,
-    EMAIL varchar(255) not null,
-    USER_ID varchar(36) not null,
-    --
-    primary key (ID)
-)^
--- end ECOMMERCE_CUSTOMER

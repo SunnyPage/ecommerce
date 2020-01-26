@@ -63,4 +63,5 @@
         <property name="file" view="_minimal"/>
         <property name="type"/>
     </view>
+    <view entity="ecommerce_Tenant" name="tenant-view"/>
 </views>

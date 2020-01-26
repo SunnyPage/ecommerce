@@ -9,5 +9,6 @@
         <item screen="ecommerce_Order.browse"/>
         <item screen="ecommerce_SubCategory.browse"/>
         <item screen="ecommerce_Tenant.browse"/>
+        <item screen="ecommerce_Payment.browse"/>
     </menu>
 </menu-config>

@@ -24,12 +24,21 @@ public class Address extends StandardEntity {
     private static final long serialVersionUID = -2910784475161739455L;
     @OneToMany(mappedBy = "address")
     protected List<Order> lineItem;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "CUSTOMER_ID")
-    protected Customer customer;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ACCOUNT_ID")
     protected Account account;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "CUSTOMER_ID")
+    protected Customer customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public String getCity() {
         return city;
@@ -63,13 +72,6 @@ public class Address extends StandardEntity {
         this.account = account;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 
     public List<Order> getLineItem() {
         return lineItem;
